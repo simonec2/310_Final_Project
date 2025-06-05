@@ -1,0 +1,24 @@
+<!-- Base template -->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}">
+    <title>Wikipedia Search</title>
+</head>
+
+<body>
+
+{% block content %}
+{% endblock %}
+
+<footer>
+    <p>Data from <a href="https://www.wikipedia.org" target="_blank">Wikipedia</a> and
+        <a href="https://www.wikipedia.org" target="_blank">OpenStreetMap</a>.
+    </p>
+</footer>
+
+</body>
+
+</html>

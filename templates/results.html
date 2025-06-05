@@ -1,0 +1,29 @@
+<!-- Template for showing the results. -->
+
+
+<!--    If you are not sure how to loop through-->
+<!--    a list inside a template, take a look at-->
+<!--    the first example in this page:-->
+<!--    https://palletsprojects.com/p/jinja/-->
+
+
+{% extends "index.html" %}
+{% block content %}
+
+  {% if results|length == 0 %}
+    <h1 class="heading">Search local Wikipedia articles</h1>
+    <p>No results were found for your query: {{place}}. Please go back and try again.</p>
+  {% else %}
+    <ul>
+      <h1 class="heading">Search local Wikipedia articles</h1>
+      <h2>Results that are close to {{place}}</h2>
+    {% for page in results %}
+      <li><h1><a href="{{ page.url }}">{{ page.title }}</a></h1><p>{{ page.summary }}</p></li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
+
+
+
