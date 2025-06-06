@@ -6,19 +6,25 @@
 <!--    the first example in this page:-->
 <!--    https://palletsprojects.com/p/jinja/-->
 
+<!--recipe name, the time it should take to make, its cuisine, and an image of the completed dish.-->
 
-{% extends "index.html" %}
+
+{% extends "base.html" %}
 {% block content %}
 
   {% if results|length == 0 %}
-    <h1 class="heading">Search local Wikipedia articles</h1>
-    <p>No results were found for your query: {{place}}. Please go back and try again.</p>
+    <h1 class="heading">Find Recipes for you</h1>
+<!--    <p>No results were found for your query: {{ingredients}}. Please go back and try again.</p>-->
   {% else %}
+<!--for each recipe that comes after the user enters their groceries list,  recipe name, -->
     <ul>
-      <h1 class="heading">Search local Wikipedia articles</h1>
-      <h2>Results that are close to {{place}}</h2>
-    {% for page in results %}
-      <li><h1><a href="{{ page.url }}">{{ page.title }}</a></h1><p>{{ page.summary }}</p></li>
+      <h1 class="heading">Find Recipes for you</h1>
+    {% for recipe in results %}
+       {{recipe}}<br>
+        <form method="POST" action="/recipe">
+
+            <button type="button" name="btn_{{recipe.id}}">Read More</button>
+        </form>
     {% endfor %}
     </ul>
   {% endif %}

@@ -2,6 +2,8 @@ import functions
 
 from flask import Flask, render_template, request
 
+from functions import get_recipe_data_safe
+
 # Create an instance of Flask
 app = Flask(__name__)
 
@@ -17,17 +19,23 @@ def results():
         # Note that everything in the forms data dictionary comes as a string, so you will need
         # to convert the max_result and radius data from string to int and float with the int() and float() functions.
 
-        place = request.form["place"]
-        max_results = int(request.form["max_results"])
-        radius = float(request.form["radius"])
-        if "sort" in request.form:
-            sort = True
-        else:
-            sort = False
-        results = functions.wikipedia_locationsearch(place, max_results, radius, sort)
+        ingredients = request.form["ingredients"]
+        number = int(request.form["number"])
 
-        return render_template('results.html', results=results, place=place)
+        recipe_data = get_recipe_data_safe(ingredients, number)
+
+        return render_template('results.html', results=recipe_data)
     else:
         # should return an HTTP 400 error with a “Wrong HTTP method” message
         # (this does not need to be styled or be a fully-formed HTML page).
         return "Wrong HTTP method", 400
+@app.route('/recipe', methods=['GET', 'POST'])
+
+def recipe():
+    if request.method == "POST":
+        for key in request.form:
+            if key.startswith("btn_"):
+                id = key.split("_")[1]
+        print(id)
+        return id
+
