@@ -3,9 +3,17 @@
 
 <h1>{{recipe.title}}</h1>
 
-<!--include a list of important info before the summary: preparationMinutes, readyInMinutes, cuisine (if there), servings -->
-<ul>
+  <img src="{{recipe.image}}" alt="Image of {{recipe.title}}"><br>
 
+<!--  ADD AMOUNT OF EACH INGREDIENT AS A LIST-->
+
+<h2>Ingredients:</h2>
+<!--<ul></ul>-->
+<!--include a list of important info before the summary: preparationMinutes, readyInMinutes, cuisine (if there), servings -->
+<h2>Recipe Summary:</h2>
+
+<ul>
+<!--  add readyInMinutes, servings, cuisine, on the results page cards-->
   {% if recipe.readyInMinutes != None %}
   <li>Ready in: {{recipe.readyInMinutes}} minutes</li>
   {% endif %}
@@ -25,11 +33,21 @@
   {% if recipe.cuisines | length > 0 %}
   <li>Cuisine: {{recipe.cuisines[0]}}</li>
   {% endif %}
-
 </ul>
-<h2>Recipe Summary:</h2>
+
 <p>{{recipe.summary|safe}}</p>
+
+
+<!--seems like instructions is a list for some recipes - how to fix that?-->
+
+<!--handle case of what to do if no instructions-->
+{% if recipe.instructions != None %}
 <h2>Recipe Instructions:</h2>
 <p>{{recipe.instructions}}</p>
+{% else %}
+<h2>Recipe Instructions:</h2>
+<p>There are no instructions for this recipe,
+  but check out the similar recipes in the "Recipe Summary"!</p>
+{% endif %}
 
 {% endblock %}
