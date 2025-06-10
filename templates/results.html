@@ -13,17 +13,19 @@
 {% block content %}
 
   {% if results|length == 0 %}
-    <h1 class="heading">Find Recipes for you</h1>
+    <h1 class="heading">Recipes Including your Ingredients</h1>
 <!--    <p>No results were found for your query: {{ingredients}}. Please go back and try again.</p>-->
   {% else %}
 <!--for each recipe that comes after the user enters their groceries list,  recipe name, -->
-    <ul>
 
-<!--WOULD YOU NEED A SEPARATE TEMPLATE TO HAVE ALL OF THIS INFO IN CARD FORMAT ?
-like each recipe card would extend this format?-->
-      <h1 class="heading">Find Recipes for you</h1>
+
+
+      <h1 class="heading">Recipes Including your Ingredients</h1>
     {% for recipe in results %}
 <!--        {{recipe}}<br>-->
+
+<!--div class for each card-->
+        <div class="recipeCard">
         <h2>{{recipe.title}}</h2><br>
 
         <img src="{{recipe.image}}" alt="Image of {{recipe.title}}"><br>
@@ -31,9 +33,11 @@ like each recipe card would extend this format?-->
         <form method="POST" action="/recipe">
 
             <input type="submit" name="btn_{{recipe.id}}" value="Read More">
+
         </form>
+        </div>
     {% endfor %}
-    </ul>
+
   {% endif %}
 
 {% endblock %}

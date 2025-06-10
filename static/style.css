@@ -1,5 +1,6 @@
 .heading{
   color: darkslateblue;
+    font-family: "Monaco", "Lucida Console", monospace;
     text-align: center;
     height:50px;
     font-size: 230%;
@@ -14,6 +15,24 @@ input{
     width: 20%;
     margin: 0 auto;
 }
+
+.recipeImage{
+    display: block;
+    margin: auto;
+    width: 40%;
+    border-radius: 25px;
+}
+
+.recipeCard{
+  background-color: honeydew;
+  width: 300px;
+  border: 10px solid green;
+  padding: 50px;
+  margin: 20px;
+  display: inline-block;
+  border-radius: 25px;
+}
+
 
 
 
