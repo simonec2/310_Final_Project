@@ -1,9 +1,28 @@
+.pageMargins{
+
+}
+
+/*main page headings*/
 .heading{
   color: darkslateblue;
     font-family: "Monaco", "Lucida Console", monospace;
     text-align: center;
-    height:50px;
-    font-size: 230%;
+    height:100px;
+    font-size: 300%;
+}
+
+/*smaller page headings*/
+.heading2{
+    font-family: "Monaco", "Lucida Console", monospace;
+    font-size: 150%;
+}
+
+/*title of recipe on each tecipe page*/
+.recipePageTitle{
+    font-family: "Monaco", "Lucida Console", monospace;
+    text-align: center;
+    height:100px;
+    font-size: 300%;
 }
 
 input{
@@ -21,6 +40,12 @@ input{
     margin: auto;
     width: 40%;
     border-radius: 25px;
+}
+
+.recipeImageResults{
+    display: block;
+    margin: auto;
+    border-radius: 10px;
 }
 
 .recipeCard{
