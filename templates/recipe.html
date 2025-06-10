@@ -1,18 +1,35 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>{recipe.title}</h2>
+<h1>{{recipe.title}}</h1>
 
 <!--include a list of important info before the summary: preparationMinutes, readyInMinutes, cuisine (if there), servings -->
 <ul>
+
+  {% if recipe.readyInMinutes != None %}
+  <li>Ready in: {{recipe.readyInMinutes}} minutes</li>
+  {% endif %}
+
+  {% if recipe.preparationMinutes != None %}
   <li>Preparation Time: {{recipe.preparationMinutes}} minutes</li>
+  {% endif %}
+
+  {% if recipe.cookingMinutes != None %}
   <li>Cooking time: {{recipe.cookingMinutes}}</li>
+  {% endif %}
 <!--  check if the cuisines list is empty-->
-  <li>Cuisine: {{recipe.cuisines}}</li>
+  {% if recipe.servings != 0 %}
   <li>Servings: {{recipe.servings}}</li>
+  {% endif %}
+
+  {% if recipe.cuisines | length > 0 %}
+  <li>Cuisine: {{recipe.cuisines[0]}}</li>
+  {% endif %}
+
 </ul>
+<h2>Recipe Summary:</h2>
+<p>{{recipe.summary|safe}}</p>
+<h2>Recipe Instructions:</h2>
+<p>{{recipe.instructions}}</p>
 
-
-<p>{recipe.summary}</p>
-
-{% endblock  %}
+{% endblock %}

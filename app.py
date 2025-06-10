@@ -2,7 +2,7 @@ import functions
 
 from flask import Flask, render_template, request
 
-from functions import get_recipe_data_safe
+from functions import get_recipe_data_safe, get_recipe_info_safe
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -33,9 +33,11 @@ def results():
 
 def recipe():
     if request.method == "POST":
+        id = None
         for key in request.form:
             if key.startswith("btn_"):
                 id = key.split("_")[1]
         print(id)
-        return id
+        recipe_info = get_recipe_info_safe(int(id))
+        return render_template("recipe.html", recipe=recipe_info)
 

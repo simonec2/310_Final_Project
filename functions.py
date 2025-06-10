@@ -59,13 +59,14 @@ def get_recipe_info_safe(id, includeNutrition = 'false', addWinePairing = 'false
         }
 
         paramstr = urllib.parse.urlencode(params)
-        baseurl = 'https://api.spoonacular.com/recipes/' + id + '/information'
+        baseurl = 'https://api.spoonacular.com/recipes/' + str(id) + '/information'
         recipe_request = baseurl + '?' + paramstr
         print(recipe_request)
 
         recipes_str = urllib.request.urlopen(Request(recipe_request, headers={'User-Agent':'Project'})).read().decode('utf8')
         recipe_data = json.loads(recipes_str)
 
+        pprint.pprint(recipe_data)
         return recipe_data
 
     except urllib.error.HTTPError as e:
@@ -73,6 +74,8 @@ def get_recipe_info_safe(id, includeNutrition = 'false', addWinePairing = 'false
     except urllib.error.URLError as e:
         print(f'Error trying to retrieve data: {e}')
         return None
+
+
 
 
 # recipe_info_print = get_recipe_info_safe('716429')

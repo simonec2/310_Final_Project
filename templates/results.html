@@ -20,10 +20,14 @@
     <ul>
       <h1 class="heading">Find Recipes for you</h1>
     {% for recipe in results %}
-       {{recipe}}<br>
+<!--        {{recipe}}<br>-->
+        <h2>{{recipe.title}}</h2><br>
+
+        <img src="{{recipe.image}}" alt="Image of {{recipe.title}}"><br>
+
         <form method="POST" action="/recipe">
 
-            <button type="button" name="btn_{{recipe.id}}">Read More</button>
+            <input type="submit" name="btn_{{recipe.id}}" value="Read More">
         </form>
     {% endfor %}
     </ul>
