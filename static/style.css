@@ -56,11 +56,12 @@ input{
 .recipeCard{
   background-color: honeydew;
   width: 300px;
-  border: 10px solid green;
+  /*border: 15px solid green;*/
   padding: 50px;
   margin: 20px;
   display: inline-block;
   border-radius: 25px;
+  box-shadow: 10px 10px 5px lightblue;
 }
 
 
