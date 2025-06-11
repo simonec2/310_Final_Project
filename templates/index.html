@@ -1,0 +1,21 @@
+<!-- Template containing the form  -->
+{% extends "base.html" %}
+{% block content %}
+
+<form method = 'POST' action = '/results'>
+    <h1 class="heading">Search Recipes</h1>
+
+    <div class ="userInput">
+<!--A text input field for the place name-->
+    <label class="heading2" for="ingredients">Enter your groceries from this week:</label><br>
+    <input class="userInputFields" type="text" id="ingredients" name="ingredients"><br>
+
+<!--A number input field for the number of results to return.-->
+    <label class="heading2" for="number">Maximum number of results:</label><br>
+    <input class="userInputFields" type="number" id="number" name="number" value="10"><br>
+
+  <input class="readMoreButton" type="submit" value="Submit">
+    </div>
+</form>
+
+{% endblock %}
