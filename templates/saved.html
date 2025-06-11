@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Saved Recipe: {{recipe.title}}</h1>
-
+<h1 class="heading">Saved Recipe: {{recipe.title}}</h1>
+<a href="/favorited"><button class="readMoreButton goToFavorites">See My Favorites</button></a>
 
 {% endblock %}

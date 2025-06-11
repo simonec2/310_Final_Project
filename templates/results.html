@@ -19,26 +19,28 @@
 
 
       <h1 class="heading">Recipes Including your Ingredients</h1>
+<div class="recipeCardContainer">
     {% for recipe in results %}
 <!--        {{recipe}}<br>-->
 
 <!--div class for each card-->
         <div class="recipeCard">
-        <h2 class="heading2">{{recipe.title}}</h2><br>
+        <h2 class="heading2 heading3">{{recipe.title}}</h2><br>
 
         <img class="recipeImageResults" src="{{recipe.image}}" alt="Image of {{recipe.title}}"><br>
-
-        <form method="POST" action="/recipe">
-            <input type="submit" name="btn_{{recipe.id}}" value="Read More">
-        </form>
 <!--            add button for favoriting       -->
         <form method="POST" action="/saved">
-            <input type="submit" name="btn_{{recipe.id}}" value="Favorite">
+            <button class="favoriteButton" type="submit" name="btn_{{recipe.id}}"></button>
         </form>
+
+        <form method="POST" action="/recipe">
+            <button class="readMoreButton" type="submit" name="btn_{{recipe.id}}">Read More</button>
+        </form>
+
 
         </div>
     {% endfor %}
-
+</div>
   {% endif %}
 
 {% endblock %}
