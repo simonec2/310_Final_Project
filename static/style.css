@@ -1,28 +1,32 @@
 .pageMargins{
 
 }
+.favoriteButton{
+    color: palevioletred;
+}
 
 /*main page headings*/
 .heading{
-  color: darkslateblue;
-    font-family: "Monaco", "Lucida Console", monospace;
+  color: darkslategrey;
+    /*font-family: "Monaco", "Lucida Console", monospace;*/
+    font-family: "Optima", "Arial", sans-serif;
     text-align: center;
     height:100px;
-    font-size: 300%;
+    font-size: 330%;
 }
 
 /*smaller page headings*/
 .heading2{
-    font-family: "Monaco", "Lucida Console", monospace;
+    font-family: "Optima", "Arial", sans-serif;
     font-size: 150%;
 }
 
 /*title of recipe on each tecipe page*/
 .recipePageTitle{
-    font-family: "Monaco", "Lucida Console", monospace;
+    font-family: "Optima", "Arial", sans-serif;
     text-align: center;
     height:100px;
-    font-size: 300%;
+    font-size: 330%;
 }
 
 input{
@@ -46,6 +50,7 @@ input{
     display: block;
     margin: auto;
     border-radius: 10px;
+    max-width: 100%;
 }
 
 .recipeCard{

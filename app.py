@@ -2,7 +2,7 @@ import functions
 
 from flask import Flask, render_template, request
 
-from functions import get_recipe_data_safe, get_recipe_info_safe
+from functions import get_recipe_data_safe, get_recipe_info_safe, update_saved_list, read_saved_list
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -40,4 +40,26 @@ def recipe():
         print(id)
         recipe_info = get_recipe_info_safe(int(id))
         return render_template("recipe.html", recipe=recipe_info)
+
+@app.route('/saved', methods=['GET', 'POST'])
+
+def saved():
+    if request.method == "POST":
+        id = None
+        for key in request.form:
+            if key.startswith("btn_"):
+                id = key.split("_")[1]
+        print(id)
+        update_saved_list(id)
+        recipe_info = get_recipe_info_safe(int(id))
+        return render_template("saved.html", recipe=recipe_info)
+
+@app.route('/favorited')
+def favorites():
+    favorites = read_saved_list()
+    favorites_list = []
+    for favorite in favorites:
+        recipe_detail = get_recipe_info_safe(int(favorite))
+        favorites_list.append(recipe_detail)
+    return render_template("favorited.html", results=favorites_list)
 

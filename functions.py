@@ -1,7 +1,7 @@
 import urllib.parse, urllib.request, urllib.error, json
 import pprint # Module that allows you print complicated data in a more readable way
 import keys
-
+import os
 from urllib.request import Request
 
 
@@ -75,8 +75,44 @@ def get_recipe_info_safe(id, includeNutrition = 'false', addWinePairing = 'false
         print(f'Error trying to retrieve data: {e}')
         return None
 
+def update_saved_list(new_item):
+    static_folder = os.path.join(os.path.dirname(__file__), 'static')
+    file_path = os.path.join(static_folder, 'saved.txt')
+
+    # Ensure the static directory exists
+    os.makedirs(static_folder, exist_ok=True)
+
+    # Read existing items (one per line)
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            items = [line.strip() for line in f if line.strip()]
+    else:
+        items = []
+
+    # Add the new item
+    items.append(new_item)
+
+    # Write the updated list back to the file
+    with open(file_path, 'w', encoding='utf-8') as f:
+        unique_list = list(set(items))
+        for item in unique_list:
+            f.write(f"{item}\n")
 
 
+def read_saved_list():
+    static_folder = os.path.join(os.path.dirname(__file__), 'static')
+    file_path = os.path.join(static_folder, 'saved.txt')
+
+    # Ensure the static directory exists
+    os.makedirs(static_folder, exist_ok=True)
+
+    # Read existing items (one per line)
+    if os.path.exists(file_path):
+        with open(file_path, 'r', encoding='utf-8') as f:
+            items = [line.strip() for line in f if line.strip()]
+    else:
+        items = []
+    return items
 
 # recipe_info_print = get_recipe_info_safe('716429')
 # pprint.pprint(recipe_info_print)
