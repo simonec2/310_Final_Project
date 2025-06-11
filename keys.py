@@ -1,1 +1,0 @@
-secret_api_key = '002c77c64157478faca3b858ac030814'
